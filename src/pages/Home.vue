@@ -135,18 +135,6 @@
         </q-list>
 
       </q-card>
-      <div class="q-mb-md col-md-6 col-xs-11 text-center">
-        <q-btn
-          outline
-          no-caps
-          type="a"
-          class="fit"
-          target="_blank"
-          icon="ion-logo-github"
-          href="https://github.com/flunkout-dvlpr/resume"
-          label="Visit The Repo!"
-        />
-      </div>
 
       <q-card id="projects" class="q-ma-md col-md-6 col-xs-11 shadow-5">
         <q-card-section class="q-pa-xs q-ma-none bg-primary text-white">
@@ -206,6 +194,19 @@
         </q-card-section>
 
       </q-card>
+
+      <div class="q-mb-md col-md-6 col-xs-11 text-center">
+        <q-btn
+          outline
+          no-caps
+          type="a"
+          class="fit"
+          target="_blank"
+          icon="ion-logo-github"
+          href="https://github.com/flunkout-dvlpr/resume"
+          label="Visit The Repo!"
+        />
+      </div>
 
     </div>
   </q-page>
