@@ -1,107 +1,71 @@
 <template>
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
-      <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="leftDrawerOpen = !leftDrawerOpen"
-        />
-
-        <q-toolbar-title>
-          Quasar App
-        </q-toolbar-title>
-
-        <div>Quasar v{{ $q.version }}</div>
+      <q-toolbar class="q-ma-xs row justify-center">
+        <div class="col-12 justify-center">
+            <div class="row justify-center text-center text-h4">Julio C. Gonzalez</div>
+            <div class="row justify-center text-center text-h10">Software Developer</div>
+        </div>
       </q-toolbar>
     </q-header>
 
-    <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
-      content-class="bg-grey-1"
-    >
-      <q-list>
-        <q-item-label
-          header
-          class="text-grey-8"
-        >
-          Essential Links
-        </q-item-label>
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
-        />
-      </q-list>
-    </q-drawer>
+    <q-footer elevated>
+      <q-toolbar class="q-ma-xs row justify-center">
+        <div class="col-xs-3 col-sm-3 col-md-1 col-lg-1 col-xl-1">
+          <q-btn
+            flat
+            class="fit"
+            type="a"
+            target="_blank"
+            icon="ion-logo-github"
+            size="lg"
+            href="https://github.com/flunkout-dvlpr"
+          />
+        </div>
+        <div class="col-xs-3 col-sm-3 col-md-1 col-lg-1 col-xl-1">
+          <q-btn
+            flat
+            class="fit"
+            type="a"
+            target="_blank"
+            icon="ion-logo-linkedin"
+            size="lg"
+            href="https://www.linkedin.com/in/julio-gonzalez-4b2904b0"
+          />
+        </div>
+        <div class="col-xs-3 col-sm-3 col-md-1 col-lg-1 col-xl-1">
+          <q-btn
+            flat
+            class="fit"
+            type="a"
+            icon="phone"
+            size="lg"
+            href="tel:832-589-5877"
+          />
+        </div>
+        <div class="col-xs-3 col-sm-3 col-md-1 col-lg-1 col-xl-1">
+          <q-btn
+            flat
+            class="fit"
+            type="a"
+            target="_blank"
+            icon="mail"
+            size="lg"
+            href="mailto:info@juliogonzalez.space"
+          />
+        </div>
+      </q-toolbar>
+    </q-footer>
 
     <q-page-container>
       <router-view />
     </q-page-container>
+
   </q-layout>
 </template>
 
 <script>
-import EssentialLink from 'components/EssentialLink.vue'
-
-const linksData = [
-  {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
-  },
-  {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
-  },
-  {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
-  },
-  {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
-  },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
-  }
-]
-
 export default {
-  name: 'MainLayout',
-  components: { EssentialLink },
-  data () {
-    return {
-      leftDrawerOpen: false,
-      essentialLinks: linksData
-    }
-  }
+  name: 'MainLayout'
 }
 </script>
