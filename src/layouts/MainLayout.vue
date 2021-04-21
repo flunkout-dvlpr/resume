@@ -17,10 +17,13 @@
 
       <q-tabs
         dense
-        class="bg-secondary text-black">
-        <q-route-tab to="/page1" no-caps label="About Me" />
-        <q-route-tab to="/page2" no-caps label="Experience" />
-        <q-route-tab to="/page3" no-caps label="Projects" />
+        class="bg-secondary text-black"
+        v-model="section"
+        @input="scrollToSection"
+      >
+        <q-tab no-caps name="about-me" label="About Me" />
+        <q-tab no-caps name="experience" label="Experience" />
+        <q-tab no-caps name="projects" label="Projects" />
       </q-tabs>
     </q-header>
 
@@ -84,7 +87,17 @@ export default {
   name: 'MainLayout',
   data () {
     return {
+      section: 'about-me',
       profileImage: 'https://media-exp1.licdn.com/dms/image/C4E03AQH06TWHQ2tZ_w/profile-displayphoto-shrink_400_400/0/1565450126632?e=1624492800&v=beta&t=M2kv1H-Qewc0ZOzBPBHdewWQPxVf8E9PFNBxQc6IoHQ'
+    }
+  },
+  methods: {
+    scrollToSection (section) {
+      console.log(section)
+      const element = document.getElementById(section)
+      const y = element.getBoundingClientRect().top + window.pageYOffset - 250
+      window.scrollTo({ top: y, behavior: 'smooth' })
+      this.$router.push({ path: `/${section}` })
     }
   }
 }
