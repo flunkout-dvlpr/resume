@@ -1,7 +1,7 @@
 <template>
   <q-page>
     <div class="row justify-center items-center content-center">
-      <q-card class="q-ma-md col-md-6 col-xs-10 shadow-5">
+      <q-card class="q-ma-md col-md-6 col-xs-11 shadow-5">
         <q-card-section class="q-pa-xs q-ma-none bg-primary text-white">
           <div class="row justify-around">
             <div class="col-12 text-h6 text-center">
@@ -18,7 +18,7 @@
         </q-card-section>
       </q-card>
 
-      <q-card class="q-ma-md col-md-6 col-xs-10 shadow-5">
+      <q-card class="q-ma-md col-md-6 col-xs-11 shadow-5">
         <q-card-section class="q-pa-xs q-ma-none bg-primary text-white">
           <div class="row justify-around">
             <div class="col-12 text-h6 text-center">
@@ -55,12 +55,17 @@
             </template>
 
             <q-card>
-              <q-card-section class="q-ma-sm rounded-borders bg-accent">
-                {{textPlaceHolder}}
+              <q-card-section class="q-pa-sm">
+                <div class="fit q-px-md bg-primary rounded-borders text-white text-h6">About</div>
+                <div class="q-pa-sm bg-accent rounded-borders">{{experience.description}}</div>
+              </q-card-section>
+              <q-card-section class="q-pa-sm">
+                <div class="fit q-px-md bg-primary rounded-borders text-white text-h6">Role</div>
+                <div class="q-pa-sm bg-accent rounded-borders">{{experience.role}}</div>
               </q-card-section>
 
               <q-card-actions>
-                <div class="fit bg-primary rounded-borders text-white text-center text-h6">References</div>
+                <div class="fit q-px-md bg-primary rounded-borders text-white text-h6">References</div>
                 <q-list
                   bordered
                   class="fit"
@@ -90,7 +95,7 @@
                           type="a"
                           target="_blank"
                           :icon="reference.linkIcon"
-                          size="lg"
+                          size="md"
                           color="primary"
                           :href="reference.link"
                         />
@@ -100,7 +105,7 @@
                           type="a"
                           target="_blank"
                           icon="mail"
-                          size="lg"
+                          size="md"
                           color="primary"
                           :href="`mailto:${reference.email}`"
                         />
@@ -130,6 +135,18 @@
         </q-list>
 
       </q-card>
+      <div class="q-mb-md col-md-6 col-xs-11 text-center">
+        <q-btn
+          outline
+          no-caps
+          type="a"
+          class="fit"
+          target="_blank"
+          icon="ion-logo-github"
+          href="https://github.com/flunkout-dvlpr/resume"
+          label="Visit The Repo!"
+        />
+      </div>
 
 <!--       <q-card class="q-ma-md col-md-6 col-xs-10 shadow-5">
         <q-card-section class="q-pa-xs q-ma-none bg-primary text-white">
@@ -208,7 +225,7 @@ export default {
           logo: 'https://f6s-public.s3.amazonaws.com/profiles/2616528_th1.jpg',
           icon: null,
           iconBackgroundColor: null,
-          description: '',
+          description: "Moneta is a fintech service which allows merchants to collect cash and digitally issue any spare change owed to it's customers. As a web application we have two different entries; one for merchants and the other for customers. The merchants access Moneta by making a profile on our website which connects directly to the POS device. When a customer wishes to digitally receive their spare change, the merchant will manually input the change amount and the customers phone number on the Moneta device. The customer will than receive a text message with a link to claim the spare change funds. Simply after creating an account the user can transfer the total collected funds to their bank account of choice. Eventually we plan on having other cash out options like bank-free debit cards or other e-wallets such as Cash App, Venmo, PayPal, etc... It's our mission to become the third party service that on-boards cash users for all digital wallets.",
           link: 'https://www.f6s.com/monetatech',
           references: [
             {
@@ -269,7 +286,8 @@ export default {
           companyName: 'Blown Assignments',
           period: '01/2020 - 09/2020',
           title: 'Lead Developer',
-          description: '',
+          description: 'Blown Assignments is an app that elevates the relationship between coaches and athletes by using accountability and effective communication. Coaches can give athletes the direction they need to reach 100% of their potential through commitment and discipline. Athletes are given directions from their coach to set core athletic goals and develop a winner’s state of mind.',
+          role: 'I was recruited to Blown Assignments with the goal of developing a web application based on an existing IOS app, after user feedback suggested a cross platform option was more suitable',
           logo: 'https://f6s-public.s3.amazonaws.com/profiles/2631997_th1.jpg',
           icon: null,
           iconBackgroundColor: null,
@@ -289,7 +307,8 @@ export default {
           companyName: 'Tech USI',
           period: '01/2018 - 03/2020',
           title: 'Lead Developer',
-          description: '',
+          description: 'USI leverages a streamlined and automated work-flow driven by full-field CMG simulations to generate physics-based type curves for primary and infill wells in unconventional reservoirs. The Science-Based Forecaster (SBF) software uses reservoir, completion, production and pressure data to quickly reveal solutions for widespread industry challenges',
+          role: 'I was with USI since day 1 and helped it go from concept to market. At USI ',
           logo: 'https://media-exp1.licdn.com/dms/image/C560BAQEQUN5csIG6zw/company-logo_100_100/0/1519910264987?e=1626912000&v=beta&t=EH_1x6qvHdi5YqVoq1HRB3Bq6yyzcV1Z6wV3A5k6E1Y',
           icon: null,
           iconBackgroundColor: null,
