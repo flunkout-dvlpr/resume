@@ -1,7 +1,7 @@
 <template>
   <q-page>
     <div class="row justify-center items-center content-center">
-      <q-card class="q-ma-md col-md-6 col-xs-11 shadow-5">
+      <q-card id="about-me" class="q-ma-md col-md-6 col-xs-11 shadow-5">
         <q-card-section class="q-pa-xs q-ma-none bg-primary text-white">
           <div class="row justify-around">
             <div class="col-12 text-h6 text-center">
@@ -18,7 +18,7 @@
         </q-card-section>
       </q-card>
 
-      <q-card class="q-ma-md col-md-6 col-xs-11 shadow-5">
+      <q-card id="experience" class="q-ma-md col-md-6 col-xs-11 shadow-5">
         <q-card-section class="q-pa-xs q-ma-none bg-primary text-white">
           <div class="row justify-around">
             <div class="col-12 text-h6 text-center">
@@ -148,7 +148,7 @@
         />
       </div>
 
-<!--       <q-card class="q-ma-md col-md-6 col-xs-10 shadow-5">
+      <q-card id="projects" class="q-ma-md col-md-6 col-xs-11 shadow-5">
         <q-card-section class="q-pa-xs q-ma-none bg-primary text-white">
           <div class="row justify-around">
             <div class="col-12 text-h6 text-center">
@@ -205,7 +205,7 @@
           </div>
         </q-card-section>
 
-      </q-card> -->
+      </q-card>
 
     </div>
   </q-page>
