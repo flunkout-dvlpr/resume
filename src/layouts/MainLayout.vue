@@ -4,10 +4,17 @@
       <q-toolbar class="q-ma-xs row justify-center">
         <div class="col-12 justify-center">
             <div class="row justify-center">
-              <img
-                :src="profileImage"
-                style="width: 125px; height: 125px; border-radius: 50%; border: 5px solid #a1a1a1;"
+              <q-btn
+                round
+                no-ripple
+                @click="switchImage = !switchImage"
               >
+                <q-img
+                  transition="flip-left"
+                  :src="switchImage ? profileImages[0] : profileImages[1]"
+                  style="width: 125px; height: 125px; border-radius: 50%; border: 5px solid #a1a1a1;"
+                />
+              </q-btn>
             </div>
             <div class="row justify-center text-h6">Julio C. Gonzalez</div>
             <div class="row justify-center text-subtiitle1">Full Stack Software Developer</div>
@@ -88,7 +95,11 @@ export default {
   data () {
     return {
       section: 'about-me',
-      profileImage: 'https://media-exp1.licdn.com/dms/image/C4E03AQH06TWHQ2tZ_w/profile-displayphoto-shrink_400_400/0/1565450126632?e=1624492800&v=beta&t=M2kv1H-Qewc0ZOzBPBHdewWQPxVf8E9PFNBxQc6IoHQ'
+      switchImage: false,
+      profileImages: [
+        'https://media-exp1.licdn.com/dms/image/C4E03AQH06TWHQ2tZ_w/profile-displayphoto-shrink_400_400/0/1565450126632?e=1624492800&v=beta&t=M2kv1H-Qewc0ZOzBPBHdewWQPxVf8E9PFNBxQc6IoHQ',
+        'https://avatars.githubusercontent.com/u/22562966?v=4'
+      ]
     }
   },
   methods: {
@@ -98,7 +109,15 @@ export default {
       const y = element.getBoundingClientRect().top + window.pageYOffset - 250
       window.scrollTo({ top: y, behavior: 'smooth' })
       this.$router.push({ path: `/${section}` })
+      if (section === 'projects') {
+        this.switchImage = false
+      } else {
+        this.switchImage = true
+      }
     }
+  },
+  mounted () {
+    setTimeout(() => { this.switchImage = true }, 800)
   }
 }
 </script>
