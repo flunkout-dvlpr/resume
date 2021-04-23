@@ -1,7 +1,7 @@
 <template>
   <q-page>
     <div class="row justify-center items-center content-center">
-      <q-card id="about-me" class="q-ma-md col-md-6 col-xs-11 shadow-5">
+      <q-card square id="about-me" class="q-ma-md col-md-6 col-xs-11 shadow-5">
         <q-card-section class="q-pa-xs q-ma-none bg-primary text-white">
           <div class="row justify-around">
             <div class="col-12 text-h6 text-center">
@@ -18,11 +18,22 @@
         </q-card-section>
       </q-card>
 
-      <q-card id="experience" class="q-ma-md col-md-6 col-xs-11 shadow-5">
+      <q-card square id="experience" class="q-ma-md col-md-6 col-xs-11 shadow-5">
         <q-card-section class="q-pa-xs q-ma-none bg-primary text-white">
           <div class="row justify-around">
-            <div class="col-12 text-h6 text-center">
+<!--             <div class="col-12 text-h6 text-center">
               Experience
+            </div> -->
+            <div class="col-12">
+              <q-btn
+                flat
+                dense
+                no-caps
+                :ripple="false"
+                class="text-h6 text-center fit"
+                label="Experience"
+                @click="updateExperiencesState"
+              />
             </div>
           </div>
         </q-card-section>
@@ -32,7 +43,7 @@
           v-for="(experience, idx) in experiences"
           :key="idx"
         >
-          <q-expansion-item default-opened>
+          <q-expansion-item :value="experience.state">
             <template v-slot:header>
               <q-item-section avatar>
                 <q-avatar size="xl" v-if="experience.logo">
@@ -40,7 +51,7 @@
                 </q-avatar>
                 <q-avatar
                   v-else
-                  :color="experience.iconBackgroundColor"
+                  :class="experience.iconBackgroundColor"
                   text-color="white"
                   size="xl"
                   :icon="experience.icon"
@@ -56,12 +67,12 @@
 
             <q-card>
               <q-card-section class="q-pa-sm">
-                <div class="fit q-px-md bg-primary rounded-borders text-white text-h6">About</div>
-                <div class="q-pa-sm bg-accent rounded-borders">{{experience.description}}</div>
+                <div class="fit q-px-md bg-primary rounded-borders text-white text-h6">About The Employer</div>
+                <div class="q-px-lg q-py-sm bg-accent rounded-borders">{{experience.description}}</div>
               </q-card-section>
               <q-card-section class="q-pa-sm">
-                <div class="fit q-px-md bg-primary rounded-borders text-white text-h6">Role</div>
-                <div class="q-pa-sm bg-accent rounded-borders">{{experience.role}}</div>
+                <div class="fit q-px-md bg-primary rounded-borders text-white text-h6">Role & Responsibilities</div>
+                <div class="q-px-lg q-py-sm bg-accent rounded-borders">{{experience.role}}</div>
               </q-card-section>
 
               <q-card-actions>
@@ -136,75 +147,106 @@
 
       </q-card>
 
-      <q-card id="projects" class="q-ma-md col-md-6 col-xs-11 shadow-5">
+      <q-card square id="projects" class="q-ma-md col-md-6 col-xs-11 shadow-5">
         <q-card-section class="q-pa-xs q-ma-none bg-primary text-white">
           <div class="row justify-around">
-            <div class="col-12 text-h6 text-center">
-              Projects
+            <div class="col-12">
+              <q-btn
+                flat
+                dense
+                no-caps
+                :ripple="false"
+                class="text-h6 text-center fit"
+                label="Projects"
+                @click="updateProjectsState"
+              />
             </div>
           </div>
         </q-card-section>
-        <q-card-section class="q-pa-xs q-ma-xs">
-          <div class="row justify-around">
-            <div class="col-12">
-              BarzBot Project Name / Link / Date
-            </div>
-          </div>
-          <div class="row justify-around">
-            <div class="col-12">
-              Description
-            </div>
-          </div>
-        </q-card-section>
-        <q-card-section class="q-pa-xs q-ma-xs">
-          <div class="row justify-around">
-            <div class="col-12">
-              Jarvis Project Name / Link / Date
-            </div>
-          </div>
-          <div class="row justify-around">
-            <div class="col-12">
-             Description
-            </div>
-          </div>
-        </q-card-section>
-        <q-card-section class="q-pa-xs q-ma-xs">
-          <div class="row justify-around">
-            <div class="col-12">
-              Just Wipes Project Name / Link / Date
-            </div>
-          </div>
-          <div class="row justify-around">
-            <div class="col-12">
-             Description
-            </div>
-          </div>
-        </q-card-section>
-        <q-card-section class="q-pa-xs q-ma-xs">
-          <div class="row justify-around">
-            <div class="col-12">
-              Twitter Bot Project Name / Link / Date
-            </div>
-          </div>
-          <div class="row justify-around">
-            <div class="col-12">
-             Description
-            </div>
-          </div>
-        </q-card-section>
+        <q-list
+          bordered
+          class="fit"
+          v-for="(project, idx) in projects"
+          :key="idx"
+        >
+          <q-expansion-item default-opened :value="project.state">
+            <template v-slot:header>
+              <q-item-section avatar>
+                <q-avatar size="xl" v-if="project.logo">
+                  <img :src="project.logo">
+                </q-avatar>
+                <q-avatar
+                  v-else
+                  :class="project.iconBackgroundColor"
+                  text-color="white"
+                  size="xl"
+                  :icon="project.icon"
+                />
+              </q-item-section>
 
+              <q-item-section>
+                <q-item-label class="text-h6">{{project.name}}</q-item-label>
+                <q-item-label class="text-h8">{{project.tagline}}</q-item-label>
+              </q-item-section>
+
+            </template>
+            <q-card>
+              <q-card-section class="q-pa-sm">
+                <div class="fit q-px-md bg-primary rounded-borders text-white text-h6">Description</div>
+              </q-card-section>
+              <q-card-section class="q-pa-sm">
+                <div class="fit q-px-md bg-primary rounded-borders text-white text-h6">Languages, Frameworks, Services, API's</div>
+                <div>
+                  <q-chip
+                    v-for="(item, idx) in project.stack"
+                    :key="idx"
+                    text-color="white"
+                    :label="item.label"
+                    :color="item.color"
+                    :icon="item.icon"
+                  />
+                </div>
+              </q-card-section>
+              <q-card-section class="q-pa-sm">
+                <div class="fit q-px-md bg-primary rounded-borders text-white text-h6">Demo & Screenshots</div>
+              </q-card-section>
+
+              <q-card-actions>
+                <div class="row fit justify-center">
+                  <div
+                    v-for="(button, idx) in project.buttons"
+                    :key="idx"
+                    class="q-mx-xs col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3"
+                  >
+                    <q-btn
+                      outline
+                      no-caps
+                      :label="button.label"
+                      :icon="button.icon"
+                      class="fit"
+                      type="a"
+                      target="_blank"
+                      :href="button.link"
+                    />
+                  </div>
+                </div>
+              </q-card-actions>
+            </q-card>
+            </q-expansion-item>
+            <q-separator />
+          </q-list>
       </q-card>
 
-      <div class="q-mb-md col-md-6 col-xs-11 text-center">
+      <div class="q-mb-md col-md-6 col-xs-11">
         <q-btn
           outline
           no-caps
           type="a"
-          class="fit"
+          class="fit bg-primary text-white text-center"
           target="_blank"
           icon="ion-logo-github"
           href="https://github.com/flunkout-dvlpr/resume"
-          label="Visit The Repo!"
+          label="Explore This Repo!"
         />
       </div>
 
@@ -261,7 +303,8 @@ export default {
               link: 'https://www.linkedin.com/in/devon-fanfair-94b7b524',
               linkIcon: 'ion-logo-linkedin'
             }
-          ]
+          ],
+          state: false
         },
         {
           companyName: 'LaunchIt Studio',
@@ -270,18 +313,19 @@ export default {
           description: '',
           logo: null,
           icon: 'ion-rocket',
-          iconBackgroundColor: 'orange',
+          iconBackgroundColor: 'launchit-gradient',
           link: 'http://launchit.studio',
           references: [
             {
               name: 'Me',
               profileImage: 'https://media-exp1.licdn.com/dms/image/C4E03AQH06TWHQ2tZ_w/profile-displayphoto-shrink_400_400/0/1565450126632?e=1624492800&v=beta&t=M2kv1H-Qewc0ZOzBPBHdewWQPxVf8E9PFNBxQc6IoHQ',
               position: 'Founder & CEO',
-              email: 'info@juliogonzalez.space',
+              email: 'julio@launchit.studio',
               link: 'https://www.linkedin.com/in/julio-gonzalez-4b2904b0',
               linkIcon: 'ion-logo-linkedin'
             }
-          ]
+          ],
+          state: false
         },
         {
           companyName: 'Blown Assignments',
@@ -302,7 +346,8 @@ export default {
               link: 'https://github.com/PaulMaas',
               linkIcon: 'ion-logo-github'
             }
-          ]
+          ],
+          state: false
         },
         {
           companyName: 'Tech USI',
@@ -323,9 +368,220 @@ export default {
               link: 'https://www.linkedin.com/in/duc-lam-p-e-8853932a',
               linkIcon: 'ion-logo-linkedin'
             }
-          ]
+          ],
+          state: false
+        }
+      ],
+      projects: [
+        {
+          name: 'Resume Builder',
+          tagline: 'Stand out amongst all other applicants',
+          icon: 'work',
+          iconBackgroundColor: 'bg-blue',
+          stack: [
+            {
+              label: 'Vue.js',
+              color: 'green',
+              icon: 'code'
+            },
+            {
+              label: 'Quasar',
+              color: 'blue',
+              icon: 'view_in_ar'
+            },
+            {
+              label: 'AWS S3',
+              color: 'orange',
+              icon: 'dns'
+            },
+            {
+              label: 'AWS Code Pipeline',
+              color: 'orange',
+              icon: 'dns'
+            },
+            {
+              label: 'AWS Route 53',
+              color: 'orange',
+              icon: 'dns'
+            },
+            {
+              label: 'AWS Code Commit',
+              color: 'orange',
+              icon: 'dns'
+            },
+            {
+              label: 'AWS Code Build',
+              color: 'orange',
+              icon: 'dns'
+            },
+            {
+              label: 'AWS Code Deploy',
+              color: 'orange',
+              icon: 'dns'
+            }
+          ],
+          buttons: [
+            {
+              label: 'Repo',
+              icon: 'ion-logo-github',
+              link: 'https://github.com/flunkout-dvlpr/resume'
+            }
+          ],
+          state: false
+        },
+        {
+          name: 'Barz Bot',
+          tagline: 'Turn your favorite lyrics into art!',
+          icon: 'queue_music',
+          iconBackgroundColor: 'spotify-gradient',
+          stack: [
+            {
+              label: 'Vue.js',
+              color: 'green',
+              icon: 'code'
+            }
+          ],
+          buttons: [
+            {
+              label: 'Frontend Repo',
+              icon: 'ion-logo-github',
+              link: 'https://github.com/flunkout-dvlpr/barz-bot-frontend'
+            },
+            {
+              label: 'Backend Repo',
+              icon: 'ion-logo-github',
+              link: 'https://github.com/flunkout-dvlpr/barz-bot-backend'
+            },
+            {
+              label: 'Try It!',
+              icon: 'language',
+              link: 'https://www.barzbot.app/#/'
+            }
+          ],
+          state: false
+        },
+        {
+          name: 'J.A.R.V.I.S. Alarm',
+          tagline: 'Wake up!, Tony Stark style',
+          icon: 'alarm',
+          iconBackgroundColor: 'jarvis-gradient',
+          stack: [
+            {
+              label: 'Vue.js',
+              color: 'green',
+              icon: 'code'
+            }
+          ],
+          buttons: [
+            {
+              label: 'Service Repo',
+              icon: 'ion-logo-github',
+              link: 'https://github.com/flunkout-dvlpr/jarvis'
+            }
+          ],
+          state: false
+        },
+        {
+          name: 'Just Wipes Companion App',
+          tagline: '',
+          icon: 'sanitizer',
+          iconBackgroundColor: 'justwipes-gradient',
+          stack: [
+            {
+              label: 'Vue.js',
+              color: 'green',
+              icon: 'code'
+            }
+          ],
+          buttons: [
+            {
+              label: 'Frontend Repo',
+              icon: 'ion-logo-github',
+              link: 'https://github.com/flunkout-dvlpr/just-wipes-webapp-frontend'
+            },
+            {
+              label: 'Backend Repo',
+              icon: 'ion-logo-github',
+              link: 'https://github.com/flunkout-dvlpr/just-wipes-webapp-backend'
+            },
+            {
+              label: 'Try It!',
+              icon: 'language',
+              link: 'http://www.justwipes.com.s3-website.us-east-2.amazonaws.com/#/'
+            }
+          ],
+          state: false
+        },
+        {
+          name: 'Bot The Bartender',
+          tagline: 'Twitter bot for drink recommendations',
+          icon: 'smart_toy',
+          iconBackgroundColor: 'bg-orange',
+          stack: [
+            {
+              label: 'Vue.js',
+              color: 'green',
+              icon: 'code'
+            }
+          ],
+          buttons: [
+            {
+              label: 'Service Repo',
+              icon: 'ion-logo-github',
+              link: 'https://github.com/flunkout-dvlpr/twitter-fix-me-a-drink'
+            },
+            {
+              label: 'Try It!',
+              icon: 'language',
+              link: 'https://twitter.com/BotTheBartender'
+            }
+          ],
+          state: false
+        },
+        {
+          name: 'Spotify Remote',
+          tagline: 'A physical Spotify remote',
+          icon: 'settings_remote',
+          iconBackgroundColor: 'spotify-gradient',
+          stack: [
+            {
+              label: 'Vue.js',
+              color: 'green',
+              icon: 'code'
+            }
+          ],
+          buttons: [
+            {
+              label: 'Service Repo',
+              icon: 'ion-logo-github',
+              link: 'https://github.com/flunkout-dvlpr/spotify-remote'
+            }
+          ],
+          state: false
         }
       ]
+    }
+  },
+  methods: {
+    updateProjectsState () {
+      const currentState = this.projects[0].state
+      this.projects.forEach(project => {
+        if (currentState) {
+          project.state = false
+        } else {
+          project.state = true
+        }
+      })
+    },
+    updateExperiencesState () {
+      const currentState = this.experiences[0].state
+      this.experiences.forEach(experience => {
+        if (currentState) {
+          experience.state = false
+        } else {
+          experience.state = true
+        }
+      })
     }
   }
 }
