@@ -1,1 +1,22 @@
 // app global css in SCSS form
+
+
+.launchit-gradient {
+  background: rgb(235,159,51);
+  background: linear-gradient(217deg, rgba(235,159,51,1) 0%, rgba(225,93,35,1) 35%, rgba(215,35,26,1) 100%);
+}
+
+.spotify-gradient {
+  background: rgb(29,185,84);
+  background: linear-gradient(217deg, rgba(29,185,84,1) 25%, rgba(46,224,109,1) 100%);
+}
+
+.jarvis-gradient {
+  background: rgb(251,202,3);
+  background: linear-gradient(217deg, rgba(251,202,3,1) 0%, rgba(170,5,5,1) 100%);
+}
+
+.justwipes-gradient {
+  background: rgb(4,160,195);
+  background: linear-gradient(217deg, rgba(4,160,195,1) 0%, rgba(4,198,242,1) 100%);
+}
